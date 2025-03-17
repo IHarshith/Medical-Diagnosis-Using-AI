@@ -8,7 +8,7 @@ models = {
     'parkinsons': pickle.load(open('models_pickle/parkinsons.sav', 'rb')),
     'lung_cancer': pickle.load(open('models_pickle/lung_cancer.sav', 'rb')),
     'thyroid': pickle.load(open('models_pickle/Thyroid_model.sav', 'rb')),
-    'kidney': pickle.load(open('models_pickle\kidney_model.sav', 'rb'))
+    'kidney': pickle.load(open('models_pickle/kidney_model.sav', 'rb'))
 
 }
 
