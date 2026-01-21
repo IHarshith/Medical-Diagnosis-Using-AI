@@ -87,24 +87,33 @@ input[type="text"]:focus, input[type="number"]:focus {{
     st.markdown(page_bg_img, unsafe_allow_html=True)
 
     if st.session_state.logged_in:
-        st.sidebar.write("Welcome!")
+        st.sidebar.success("Welcome!")
         if st.sidebar.button("Logout"):
             st.session_state.logged_in = False
-            st.sidebar.success("Logged out successfully.")
-            time.sleep(1)  
-            st.sidebar.empty() 
+            time.sleep(1)
+            st.rerun()
     else:
-        username = st.sidebar.text_input("Username")
-        password = st.sidebar.text_input("Password", type="password")
+        st.sidebar.info("Demo login\nUsername: user\nPassword: user@123")
+
+        username = st.sidebar.text_input(
+            "Username",
+            key="username"
+        )
+
+        password = st.sidebar.text_input(
+            "Password",
+            type="password",
+            key="password"
+        )
+
         if st.sidebar.button("Login"):
-            if username == "user" and password == "user@123": 
+            if username == "user" and password == "user@123":
                 st.session_state.logged_in = True
-                login_message = st.sidebar.empty()
-                login_message.success("Logged in successfully.")
-                time.sleep(3) 
-                login_message.empty()  
+                st.sidebar.success("Logged in successfully.")
+                time.sleep(1)
+                st.rerun()
             else:
-                st.sidebar.error("Invalid username or password.")
+                st.sidebar.error("Invalid username or password")
 
     if not st.session_state.logged_in:
         st.warning("Please log in to access the application.")
